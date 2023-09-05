@@ -1,0 +1,2 @@
+Area of triangle is: 2
+Area of quad is: 4
