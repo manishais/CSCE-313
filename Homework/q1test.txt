@@ -1,0 +1,4 @@
+My name is Manisha Subrahmanya
+I am a junior in Computer Engineering
+This is a test file for q1.cpp
+This program takes in the pathname of a file and prints it line by line
