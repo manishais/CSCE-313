@@ -1,0 +1,35 @@
+multiple arguments
+
+command pipeline - outputs of one command becomes inputs of next command
+    use command vector to create pipeline
+    refer to lab 3a, unnmaed pipes, pipe(), dup(), and dup2()
+
+output redirection - change stdout to file
+    open the file for writing as a file descriptor
+    use dup2() to redirect the stdout (1) from file descriptor fd
+input redirection - change stdin from file
+    open the file for reading as a file descriptor
+    use dup2() to redirect the stdin (0) from file descriptor fd
+
+I/O redirection can be together
+
+files for redirection are stored in the command class  
+
+handle commands that run background
+    return the user prompt to user control until command is done
+    use Command -> isBackground()
+    store pid from fork() in vector of background processes
+    before prompting user, iterate over vector to reap processes
+    make waitpid() non-blocking for background processes
+
+cd (change directory) use chdir()
+    cd - -> keep track of previous directory
+    use getcwd()
+
+user prompt - date/time, user name, abs path of cwd
+    getenv("USER) and getcwd()
+
+    OUTPUT INPUT redirection
+        call open(filename)
+        this gives file descriptor (fd)
+        dup the fd over stdin or stdout

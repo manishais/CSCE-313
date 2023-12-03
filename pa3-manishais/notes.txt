@@ -1,0 +1,24 @@
+Client:
+- need to join() threads after making them
+
+Data Transfers:
+- create p-threads to produce datamsgs (w/ecg1)
+- create w FIFOs for workers to use
+- crwate w-threads to consume and process datamsgs
+    -> worker threads produce result of process datamsgs
+- create h-threads to consume results and populate HG (w/update(...))
+
+Historgram uses mutex to avoid race conditions
+
+File Transfers:
+- collect file size
+- create a thread to produce filemsgs
+- create w-threads to consume and process filemsgs
+    -> use fseel (w/SEEL_SET) to write to file (open mode important)
+
+BoundedBuffer:
+- STL queue with objects vector<char>
+- use a mutex and cond var
+    -> mutex is wrapped in unique_lock
+- push waits on size < max; notify pop that data available
+- pop waits on size > 0; notify push that slot available
